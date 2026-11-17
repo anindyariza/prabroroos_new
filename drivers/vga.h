@@ -1,0 +1,28 @@
+/*
+ * PrabroroOS — drivers/vga.h
+ * VGA text mode 80x25 driver header
+ */
+#pragma once
+#include "../kernel/types.h"
+
+typedef enum {
+    VGA_BLACK = 0, VGA_BLUE, VGA_GREEN, VGA_CYAN,
+    VGA_RED, VGA_MAGENTA, VGA_BROWN, VGA_LIGHT_GREY,
+    VGA_DARK_GREY, VGA_LIGHT_BLUE, VGA_LIGHT_GREEN, VGA_LIGHT_CYAN,
+    VGA_LIGHT_RED, VGA_LIGHT_MAGENTA, VGA_YELLOW, VGA_WHITE
+} vga_color_t;
+
+void vga_init(void);
+void vga_clear(void);
+void vga_putchar(char c);
+void vga_print(const char *s);
+void vga_println(const char *s);
+void vga_print_hex(uint32_t val);
+void vga_print_dec(int32_t val);
+void vga_print_udec(uint32_t val);
+void vga_set_color(vga_color_t fg, vga_color_t bg);
+void vga_get_cursor(int *row, int *col);
+void vga_print_colored(const char *s, vga_color_t fg, vga_color_t bg);
+void vga_println_colored(const char *s, vga_color_t fg, vga_color_t bg);
+void vga_update_hw_cursor(void);
+void vga_print_at(int row, int col, const char *s);
